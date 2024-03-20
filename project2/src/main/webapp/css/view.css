@@ -1,0 +1,43 @@
+/* Add your styles for the 'view.jsp' page here */
+
+body {
+    background-color: #3498db; /* Blue color */
+    color: black; /* 변경된 부분: 글자 색을 검정색으로 지정 */
+}
+
+.container {
+    margin: 50px auto;
+    width: 60%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    color: black; /* 변경된 부분: 글자 색을 검정색으로 지정 */
+}
+
+input[type="button"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="button"]:hover {
+    background-color: #45a049;
+}

@@ -1,0 +1,15 @@
+package dbquery;
+
+import dbquery.DbQuery;
+
+@Configuration
+public class DbQueryConfig {
+
+	@Autowired
+	private javax.sql.DataSource dataSource;
+
+	@Bean
+	public DbQuery dbQuery() {
+		return new DbQuery(dataSource);
+	}
+}

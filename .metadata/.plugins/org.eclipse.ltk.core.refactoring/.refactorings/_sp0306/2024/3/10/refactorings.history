@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;chap02&apos; to &apos;_sp307/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;_sp0306&apos;&#x0D;&#x0A;- Destination element: &apos;_sp307/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;_sp0306/src/main/java/chap02&apos;" description="Copy package" destination="=_sp307/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;chap02" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1709779021164" version="1.0"/>
+</session>

@@ -1,0 +1,56 @@
+package spring;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Collection;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MemberDao {
+
+	private JdbcTemplate jdbcTemplate;
+
+	public MemberDao(DataSource dataSource) {
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
+	}
+
+	public Member selectByEmail(String email) {
+		List<Member> results = jdbcTemplate.query(
+				"select * from MEMBER where EMAIL = ?", 
+				new RowMapper<Member>() { // RowMapper를 구현하여 ResultSet에서 데이터를 가져와 Member 객체를 생성합니다.
+					@Override
+					public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
+						// Member 객체를 생성하고 ResultSet에서 데이터를 추출하여 초기화합니다.
+						Member member = new Member(
+								rs.getString("EMAIL"),
+								rs.getString("PASSWORD"),
+								rs.getString("NAME"),
+								rs.getTimestamp("REGDATE").toLocalDateTime());
+						// ID 필드를 설정합니다.
+						member.setId(rs.getLong("ID"));
+						return member;
+					}
+				}, email); // 쿼리 파라미터로 이메일을 사용합니다.
+
+		// 결과 목록이 비어 있지 않다면 첫 번째 Member 객체를 반환하고, 그렇지 않으면 null을 반환합니다.
+		return results.isEmpty() ? null : results.get(0);
+	}
+
+	
+
+	public void insert(Member member) {
+	}
+
+	public void update(Member member) {
+	}
+
+	public Collection<Member> selectAll() {
+		return null;
+	}
+}
