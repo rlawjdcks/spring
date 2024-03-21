@@ -15,8 +15,9 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class MemberDao {
 	
 	private JdbcTemplate jdbcTemplate;
@@ -79,32 +80,37 @@ public class MemberDao {
 
 		return results.isEmpty() ? null : results.get(0);
 	}
-
-	public void insert(Member member) {
-		jdbcTemplate.update("insert into MEMBER (EMAIL, PASSWORD, NAME, REGDATE) values (?,?,?,now())",
-				member.getEmail(),member.getPassword(),member.getName());
-	}
 	
-	public void insert2(Member member) {
+	public void insert(Member member) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
+			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement pstmt = con.prepareStatement(
-								"insert into MEMBER (EMAIL, PASSWORD, NAME, REGDATE) values (?,?,?,now())",new String[] {"ID"});
+				PreparedStatement pstmt 
+				   = con.prepareStatement
+				   ("insert into MEMBER (EMAIL, PASSWORD, NAME, REGDATE) "
+				   		+ "values (?, ?, ?, now())", new String[] {"ID"});
 				pstmt.setString(1, member.getEmail());
 				pstmt.setString(2, member.getPassword());
 				pstmt.setString(3, member.getName());
 				return pstmt;
 			}
-		},keyHolder);
+		}, keyHolder);
 		Number keyValue = keyHolder.getKey();
 		member.setId(keyValue.longValue());
 	}
 
+	public void insert2(Member member) {
+		jdbcTemplate.update(
+				"insert into MEMBER (EMAIL, PASSWORD, NAME, REGDATE) values (?, ?, ?, now())",
+				member.getEmail(), member.getPassword() ,member.getName());
+	}
+
 	public void update(Member member) {
-		jdbcTemplate.update("update MEMBER set NAME = ?, PASSWORD = ? where EMAIL=?",
-							member.getName(),member.getPassword(),member.getEmail());
+		jdbcTemplate.update(
+				"update MEMBER set NAME = ?, PASSWORD = ? where EMAIL = ?",
+				member.getName(), member.getPassword(), member.getEmail());
 	}
 
 	public List<Member> selectAll() {
@@ -124,54 +130,10 @@ public class MemberDao {
 				});
 
 		return results;
-		
-		
+
 	}
-	public List<Member> selectAll2() {
-		List<Member> results = jdbcTemplate.query(
-				"select * from MEMBER",
-			(rs, rowNum) -> {
-						Member member = new Member(
-								rs.getString("EMAIL"),
-								rs.getString("PASSWORD"),
-								rs.getString("NAME"),
-								rs.getTimestamp("REGDATE").toLocalDateTime());
-						member.setId(rs.getLong("ID"));
-						return member;
-				});
-		
-		return results;
-		
-		
-	}
-	
-	
 	public int count() {
-		Integer count = jdbcTemplate.queryForObject("select count(*) from MEMBER", Integer.class);
-		
-		return count;
+		return jdbcTemplate.queryForObject
+				("select count(*) from member", Integer.class);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

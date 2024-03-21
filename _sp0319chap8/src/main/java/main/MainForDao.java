@@ -24,36 +24,37 @@ public class MainForDao {
 
 		MemberDao dao = ctx.getBean(MemberDao.class);
 		
+		Member member2 = new Member("kim3@korea.com", "1234", "김길동3", null);
+		dao.insert(member2);
+		LOGGER.info("---한 행이 입력되었습니다.");
+		LOGGER.info("새로 입력된 회원의 ID: {}", member2.getId());
 		
-		Member member2 = new Member("cba@a.com","512345","b하나b", null);
-		dao.insert2(member2);
-		LOGGER.info("새로 입력된 회원 ID : {}",member2.getId());
-//		Member member3 = new Member("a@a.com","2345","둘", null);
-//		dao.update(member3);
-		LOGGER.info("한행 입력됨");
+		Member member3 = new Member("aaa@korea.com", "5678", "김하나", null);
+		dao.update(member3);
+		LOGGER.info("---한 행이 수정되었습니다.");
 		
 		int cnt = dao.count();
-		LOGGER.info("총 인원수 : {}", cnt );
+		LOGGER.info("총 인원 수: {}", cnt);
 		
-		
-		
-		List<Member> list = dao.selectAll2();
-		LOGGER.info("---Member테이블 내영--");
+		List<Member> list = dao.selectAll();
+		LOGGER.info("---Member 테이블 내용---");
 		for (Member member : list) {
 			LOGGER.info(member.toString());
 		}
-		LOGGER.info("---Member테이블 내영끝--");
-		
-		
-		
-		
-		Member member = dao.selectByEmail3("madvirus@madvirus");
-		LOGGER.info("아이디:{}, 이메일:{}, 패스워드:{}, 이름:{}, 등록일:{}",
-				                      member.getId(), 
-				                      member.getEmail(),
-				                      member.getPassword(),
-				                      member.getName(),
-				                      member.getRegisterDateTime());
+		LOGGER.info("---Member 테이블 내용 끝---");
+		Member member = dao.selectByEmail3("kim2@korea.com");
+		if (member != null) {
+//			LOGGER.info("{}", member);
+			LOGGER.info("아이디:{}, 이메일:{}, 패스워드:{}, 이름:{}, 등록일:{}",
+					                      member.getId(), 
+					                      member.getEmail(),
+					                      member.getPassword(),
+					                      member.getName(),
+					                      member.getRegisterDateTime());
+		} else {
+			LOGGER.info("이메일로 검색안됨");
+		}
+
 
 		ctx.close();
 

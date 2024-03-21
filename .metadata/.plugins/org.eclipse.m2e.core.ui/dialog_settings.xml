@@ -27,8 +27,10 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.sky"/>
 		</list>
 		<list key="groupId">
+			<item value="com.sky"/>
 		</list>
 		<list key="artifactId">
 		</list>
@@ -46,20 +48,12 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
-			<item value="_sp0319chap8"/>
-			<item value="_sp0319"/>
-			<item value="_sp0318"/>
-			<item value="_sp0311"/>
-			<item value="_sp0307"/>
+			<item value="com.sky"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
-			<item value="_sp0319chap8"/>
-			<item value="_sp0319"/>
-			<item value="_sp0318"/>
-			<item value="_sp0311"/>
-			<item value="_sp0307"/>
+			<item value="sp0320"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -120,9 +114,22 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\_dev\spring"/>
 			<item value="D:\_dev\jsp"/>
 			<item value="D:\_dev\jsp\_sp307"/>
 			<item value="D:\_dev\jsp\_sp0306"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenModuleWizardParentPage">
+		<list key="moduleName">
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

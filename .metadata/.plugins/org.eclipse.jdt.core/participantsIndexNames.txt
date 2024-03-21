@@ -51,7 +51,11 @@ D:\_dev\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3129801786.ind
 \sp0320\src\main\java
 D:\_dev\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3215767467.index
 \project2\src\main\java
+D:\_dev\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2915452636.index
+\springex\src\main\java
 D:\_dev\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2278163000.index
 \_web0221\src\main\java
+D:\_dev\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3129801786.index
+\sp0320\src\main\java
 D:\_dev\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3866920677.index
 \_web0228\src\main\java
